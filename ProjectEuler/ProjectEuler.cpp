@@ -62,3 +62,4 @@ size_t SumOfEvenTermsInFibonacciSequenceLessThan4Million()
 	return sum;
 }
 
+// Problem 3
