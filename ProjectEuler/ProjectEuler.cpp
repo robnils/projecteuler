@@ -3,15 +3,20 @@
 
 #include "stdafx.h"
 #include <iostream>
+#include <string>
 
 size_t SumOfAllNumbersBelow1000();
 size_t SumOfEvenTermsInFibonacciSequenceLessThan4Million();
+bool is_prime(unsigned long long int number);
+unsigned long long int LargestPrimeFactorOf(unsigned long long int number);
 
 int main()
 {
 	std::cout << "*** Results ***\n";
 	std::cout << "Problem 1: " << SumOfAllNumbersBelow1000() << std::endl;
 	std::cout << "Problem 2: " << SumOfEvenTermsInFibonacciSequenceLessThan4Million() << std::endl;
+	unsigned long long int factor = LargestPrimeFactorOf(600851475143);
+	std::cout << "Problem 3: " << factor << std::endl;
     return 0;
 }
 
@@ -63,3 +68,81 @@ size_t SumOfEvenTermsInFibonacciSequenceLessThan4Million()
 }
 
 // Problem 3
+// The prime factors of 13195 are 5, 7, 13 and 29.
+// What is the largest prime factor of the number 600851475143 ?
+
+// Tests whether "number" is prime or not. 
+bool is_prime(unsigned long long int  number)
+{
+	bool is_prime = true;	
+	for (unsigned long long int  i = 2; i < number; i++)
+	{
+		if ((number % i) == 0)
+		{
+			is_prime = false;
+			break;
+		}
+	}
+	return is_prime;
+}
+
+void WriteYesIfTrueNoIfFalse(bool value)
+{
+	if (value)
+	{
+		std::cout << "yes";
+	}
+	else
+	{
+		std::cout << "no";
+	}
+}
+
+unsigned long long int LargestPrimeFactorOf(unsigned long long int number)
+{	
+	// Test prime
+	//size_t number = 12;
+	unsigned long long int factor_1 = 1;
+	unsigned long long int factor_2 = 1;
+
+	unsigned long long int p_factor_1 = 1;
+	unsigned long long int p_factor_2 = 1;
+
+	unsigned long long int largest_prime_factor = 1;
+	std::string prime_yes = "prime";
+	std::string prime_no = "not prime";
+
+	// Get factors 
+	for (unsigned long long int i = 2; i < number; i++)
+	{
+		//600851475143
+		if (i % 1000000 == 0)
+		{
+			std::cout << "Testing " << i << "..." << std::endl;
+		}
+		// If number is a factor
+		if ((number % i) == 0)
+		{
+			unsigned long long int factor_1 = i;
+			unsigned long long int factor_2 = (number / i);
+
+			
+			std::cout << "Current factor: " << factor_1;
+			bool res1 = is_prime(factor_1);						
+			p_factor_1 = (res1) ? factor_1 : p_factor_1;
+			std::cout << "\t" << ((res1) ? prime_yes : prime_no);
+			
+			std::cout << "\nCurrent factor: " << factor_2;
+			bool res2 = is_prime(factor_2);
+			p_factor_2 = (res2) ? factor_2 : p_factor_2;
+			std::cout << "\t" << ((res2) ? prime_yes : prime_no);			
+			
+			// If prime factor is the current largest
+			largest_prime_factor = (p_factor_1 > largest_prime_factor) ? p_factor_1 : largest_prime_factor;
+			largest_prime_factor = (p_factor_2 > largest_prime_factor) ? p_factor_2 : largest_prime_factor;
+			
+			std::cout << "\nLargest: " << largest_prime_factor << std::endl << std::endl;
+		}
+	}	
+	return largest_prime_factor;
+}
