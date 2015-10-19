@@ -116,7 +116,7 @@ unsigned long long int LargestPrimeFactorOf(unsigned long long int number)
 	for (unsigned long long int i = 2; i < number; i++)
 	{
 		//600851475143
-		if (i % 1000000 == 0)
+		if (i % 10000000 == 0)
 		{
 			std::cout << "Testing " << i << "..." << std::endl;
 		}
@@ -125,7 +125,6 @@ unsigned long long int LargestPrimeFactorOf(unsigned long long int number)
 		{
 			unsigned long long int factor_1 = i;
 			unsigned long long int factor_2 = (number / i);
-
 			
 			std::cout << "Current factor: " << factor_1;
 			bool res1 = is_prime(factor_1);						
