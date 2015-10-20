@@ -115,7 +115,7 @@ unsigned long long int LargestPrimeFactorOf(unsigned long long int number)
 	// Get factors 
 	for (unsigned long long int i = 2; i < number; i++)
 	{
-		//600851475143
+		// Display something to show the program is working
 		if (i % 10000000 == 0)
 		{
 			std::cout << "Testing " << i << "..." << std::endl;
@@ -144,4 +144,59 @@ unsigned long long int LargestPrimeFactorOf(unsigned long long int number)
 		}
 	}	
 	return largest_prime_factor;
+}
+
+// Problem 4
+// A palindromic number reads the same both ways.The largest palindrome made from the
+// product of two 2 - digit numbers is 9009 = 91 × 99.
+// Find the largest palindrome made from the product of two 3 - digit numbers.
+
+bool is_pallindrome(size_t number)
+{
+	std::string s = std::to_string(number);
+	int len = s.length();
+
+	// The upper bound of the loop below is the middle point of the 
+	// string. The if-condition takes care of the middle value (irrelevant for our purposes)
+	// in the event of an odd number.
+	int upper_bound = (len % 2 == 0) ? len / 2 : (len - 1) / 2 ; 
+
+	bool is_pallindrome = true;
+	for (size_t i = 0; i < upper_bound; i++)
+	{
+		if (s[i] != s[len - i - 1])
+		{
+			//1221, len = 4
+			// 
+			is_pallindrome = false;
+			break;
+		}
+	}
+	return is_pallindrome;
+}
+
+size_t LargestPallindromeProductOfTwo3DigitNumbers()
+{
+	size_t digit_1 = 999, digit_2=998, largest_pallindrome;
+
+	// 999*999 = 998001 != pallindrome
+	// Note: products on integers is commutative; hence,x*y=y*x.
+	// Also, we start at the maximum bound; 999*998 as it is the 
+	// largest pallindrome we seek. This is far faster than starting at 1.
+	for (size_t i = 999; i > 0; i--)
+	{
+		int product = digit_1*digit_2;
+
+		if (is_pallindrome(product))
+		{
+			largest_pallindrome = product;
+			break;
+		}
+		
+		digit_1--;
+		digit_2--;
+	}
+
+	return largest_pallindrome;
+	
 }
