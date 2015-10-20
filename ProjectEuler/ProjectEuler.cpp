@@ -15,11 +15,13 @@ size_t LargestPallindromeProductOfTwo3DigitNumbers();
 int main()
 {
 	std::cout << "*** Results ***\n";
+	/*
 	std::cout << "Problem 1: " << SumOfAllNumbersBelow1000() << std::endl;
 	std::cout << "Problem 2: " << SumOfEvenTermsInFibonacciSequenceLessThan4Million() << std::endl;
 	std::cout << "Problem 3: " << LargestPrimeFactorOf(600851475143) << std::endl;
+	*/
 	std::cout << "Problem 4: " << LargestPallindromeProductOfTwo3DigitNumbers() << std::endl;
-    return 0;
+	return 0;
 }
 
 // Problem 1
@@ -50,11 +52,11 @@ size_t SumOfAllNumbersBelow1000()
 
 size_t SumOfEvenTermsInFibonacciSequenceLessThan4Million()
 {
-	size_t x_prev = 1, x = 2, x_next = x; 
+	size_t x_prev = 1, x = 2, x_next = x;
 	size_t upper_limit = 4000000;
 
 	size_t sum = 0;
-	
+
 	while (x_next < upper_limit)
 	{
 		// Calculate sum of even-valued Fibonacci Sequence
@@ -80,8 +82,8 @@ size_t SumOfEvenTermsInFibonacciSequenceLessThan4Million()
 // Tests whether "number" is prime or not. 
 bool is_prime(unsigned long long int  number)
 {
-	bool is_prime = true;	
-	for (unsigned long long int  i = 2; i < number; i++)
+	bool is_prime = true;
+	for (unsigned long long int i = 2; i < number; i++)
 	{
 		if ((number % i) == 0)
 		{
@@ -93,7 +95,7 @@ bool is_prime(unsigned long long int  number)
 }
 
 unsigned long long int LargestPrimeFactorOf(unsigned long long int number)
-{	
+{
 	// Test prime
 	//size_t number = 12;
 	unsigned long long int factor_1 = 1;
@@ -119,24 +121,24 @@ unsigned long long int LargestPrimeFactorOf(unsigned long long int number)
 		{
 			unsigned long long int factor_1 = i;
 			unsigned long long int factor_2 = (number / i);
-			
+
 			std::cout << "Current factor: " << factor_1;
-			bool res1 = is_prime(factor_1);						
+			bool res1 = is_prime(factor_1);
 			p_factor_1 = (res1) ? factor_1 : p_factor_1;
 			std::cout << "\t" << ((res1) ? prime_yes : prime_no);
-			
+
 			std::cout << "\nCurrent factor: " << factor_2;
 			bool res2 = is_prime(factor_2);
 			p_factor_2 = (res2) ? factor_2 : p_factor_2;
-			std::cout << "\t" << ((res2) ? prime_yes : prime_no);			
-			
+			std::cout << "\t" << ((res2) ? prime_yes : prime_no);
+
 			// If prime factor is the current largest
 			largest_prime_factor = (p_factor_1 > largest_prime_factor) ? p_factor_1 : largest_prime_factor;
 			largest_prime_factor = (p_factor_2 > largest_prime_factor) ? p_factor_2 : largest_prime_factor;
-			
+
 			std::cout << "\nLargest: " << largest_prime_factor << std::endl << std::endl;
 		}
-	}	
+	}
 	return largest_prime_factor;
 }
 
@@ -155,15 +157,13 @@ bool is_pallindrome(size_t number)
 	// The upper bound of the loop below is the middle point of the 
 	// string. The if-condition takes care of the middle value (irrelevant for our purposes)
 	// in the event of an odd number.
-	size_t upper_bound = (len % 2 == 0) ? len / 2 : (len - 1) / 2 ;
+	size_t upper_bound = (len % 2 == 0) ? len / 2 : (len - 1) / 2;
 
 	bool is_pallindrome = true;
 	for (size_t i = 0; i < upper_bound; i++)
 	{
 		if (s[i] != s[len - i - 1])
 		{
-			//1221, len = 4
-			// 
 			is_pallindrome = false;
 			break;
 		}
@@ -173,13 +173,13 @@ bool is_pallindrome(size_t number)
 
 size_t LargestPallindromeProductOfTwo3DigitNumbers()
 {
-	size_t digit_1 = 999, digit_2=998, largest_pallindrome;
+	size_t digit_1 = 999, digit_2 = 998, largest_pallindrome;
 
 	// 999*999 = 998001 != pallindrome
 	// Note: products on integers is commutative; hence,x*y=y*x.
 	// Also, we start at the maximum bound; 999*998 as it is the 
 	// largest pallindrome we seek. This is far faster than starting at 1.
-	for (size_t i = 999; i > 0; i--)
+	for (size_t i = 999; i > 99; i--)
 	{
 		int product = digit_1*digit_2;
 
@@ -188,13 +188,14 @@ size_t LargestPallindromeProductOfTwo3DigitNumbers()
 			largest_pallindrome = product;
 			break;
 		}
-		
+
 		digit_1--;
 		digit_2--;
 	}
 
 	return largest_pallindrome;
-	
+
 }
 
 /*** End of Problem 4 **/
+
