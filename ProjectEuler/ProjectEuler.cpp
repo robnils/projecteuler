@@ -4,6 +4,7 @@
 #include "stdafx.h"
 #include <iostream>
 #include <string>
+#include <fstream>
 
 size_t SumOfAllNumbersBelow1000();
 size_t SumOfEvenTermsInFibonacciSequenceLessThan4Million();
@@ -173,6 +174,9 @@ bool is_pallindrome(size_t number)
 
 size_t LargestPallindromeProductOfTwo3DigitNumbers()
 {
+	std::ofstream log;
+	log.open("problem_4.txt");
+	
 	size_t digit_1 = 999, digit_2 = 998, largest_pallindrome;
 
 	// 999*999 = 998001 != pallindrome
@@ -183,18 +187,20 @@ size_t LargestPallindromeProductOfTwo3DigitNumbers()
 	{
 		int product = digit_1*digit_2;
 
+		log << "Testing " << product << "...";
 		if (is_pallindrome(product))
 		{
 			largest_pallindrome = product;
+			log << "...Yes!\n";
 			break;
 		}
+		log << "...No.\n";
 
 		digit_1--;
 		digit_2--;
 	}
-
+	log.close();
 	return largest_pallindrome;
-
 }
 
 /*** End of Problem 4 **/
