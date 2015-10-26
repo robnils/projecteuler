@@ -13,6 +13,7 @@ bool is_prime(unsigned long long int number);
 unsigned long long int LargestPrimeFactorOf(unsigned long long int number);
 bool is_pallindrome(size_t number);
 size_t LargestPallindromeProductOfTwo3DigitNumbers();
+int SmallestPositiveNumberEvenlyDivisibleByAllNumbers1To20();
 
 int main()
 {	
@@ -39,7 +40,7 @@ int main()
 		cout << "Problem 4: " << LargestPallindromeProductOfTwo3DigitNumbers() << endl;
 		break;
 	case 5:
-		cout << "Problem 5: ";
+		cout << "Problem 5: " << SmallestPositiveNumberEvenlyDivisibleByAllNumbers1To20() << endl;;
 		break;
 	default:
 		cout << "Invalid choice. Aborting...";
@@ -233,6 +234,30 @@ size_t LargestPallindromeProductOfTwo3DigitNumbers()
 // 2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
 // What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20 ?
 
+int SmallestPositiveNumberEvenlyDivisibleByAllNumbers1To20()
+{
+	bool found = true;
+	int num = 2520;
 
+	while (true)
+	{	
+		found = true;
+		for (size_t i = 1; i <= 20; i++)
+		{
+			if (num % i != 0)
+			{
+				found = false;
+				break;
+			}
+		}
+		if (found)
+		{
+			break;
+		}
+		num++;
+	}
+
+	return num;
+}
 
 /*** End of Problem 5 **/
