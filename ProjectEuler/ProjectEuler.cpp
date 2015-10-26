@@ -14,6 +14,7 @@ unsigned long long int LargestPrimeFactorOf(unsigned long long int number);
 bool is_pallindrome(size_t number);
 size_t LargestPallindromeProductOfTwo3DigitNumbers();
 int SmallestPositiveNumberEvenlyDivisibleByAllNumbers1To20();
+int DifferenceBetweenSumOfSquaresOfFirst100NaturalNumbersAndSquareOfSum();
 
 int main()
 {	
@@ -41,6 +42,9 @@ int main()
 		break;
 	case 5:
 		cout << "Problem 5: " << SmallestPositiveNumberEvenlyDivisibleByAllNumbers1To20() << endl;;
+		break;
+	case 6:
+		cout << "Problem 6: " << DifferenceBetweenSumOfSquaresOfFirst100NaturalNumbersAndSquareOfSum() << endl;;
 		break;
 	default:
 		cout << "Invalid choice. Aborting...";
@@ -261,3 +265,15 @@ int SmallestPositiveNumberEvenlyDivisibleByAllNumbers1To20()
 }
 
 /*** End of Problem 5 **/
+
+// Problem 6
+// Find the difference between the sum of the squares of the 
+// first one hundred natural numbers and the square of the sum.
+
+int DifferenceBetweenSumOfSquaresOfFirst100NaturalNumbersAndSquareOfSum()
+{
+
+	return 1;
+}
+
+/*** End of Problem 6 **/
