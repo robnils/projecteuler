@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+//#include <stdlib.h>
 
 size_t SumOfAllNumbersBelow1000();
 size_t SumOfEvenTermsInFibonacciSequenceLessThan4Million();
@@ -14,14 +15,37 @@ bool is_pallindrome(size_t number);
 size_t LargestPallindromeProductOfTwo3DigitNumbers();
 
 int main()
-{
-	std::cout << "*** Results ***\n";
-	/*
-	std::cout << "Problem 1: " << SumOfAllNumbersBelow1000() << std::endl;
-	std::cout << "Problem 2: " << SumOfEvenTermsInFibonacciSequenceLessThan4Million() << std::endl;
-	std::cout << "Problem 3: " << LargestPrimeFactorOf(600851475143) << std::endl;
-	*/
-	std::cout << "Problem 4: " << LargestPallindromeProductOfTwo3DigitNumbers() << std::endl;
+{	
+	using namespace std;
+	cout << "*** Results ***\n";
+	cout << "Choose a problem (1-4): ";
+	string user_choice = "";
+	cin >> user_choice;
+	int choice = atoi(user_choice.c_str());
+	cout << endl;
+
+	switch (choice)
+	{
+	case 1:
+		cout << "Problem 1: " << SumOfAllNumbersBelow1000() << endl;
+		break;
+	case 2:
+		cout << "Problem 2: " << SumOfEvenTermsInFibonacciSequenceLessThan4Million() << endl;
+		break;
+	case 3:
+		cout << "Problem 3: " << LargestPrimeFactorOf(600851475143) << endl;
+		break;
+	case 4:
+		cout << "Problem 4: " << LargestPallindromeProductOfTwo3DigitNumbers() << endl;
+		break;
+	case 5:
+		cout << "Problem 5: ";
+		break;
+	default:
+		cout << "Invalid choice. Aborting...";
+		break;
+	}
+
 	return 0;
 }
 
@@ -187,12 +211,13 @@ size_t LargestPallindromeProductOfTwo3DigitNumbers()
 		for (size_t j = 999; j > 99; j--)
 		{
 			size_t product = i*j;
-
+						
 			if (is_pallindrome(product))
 			{
 				if (product > largest_pallindrome)
 				{
 					largest_pallindrome = product;
+					std::cout << product << "...Yes!\n";
 					log << product << "...Yes!\n";
 				}
 			}
@@ -204,3 +229,10 @@ size_t LargestPallindromeProductOfTwo3DigitNumbers()
 
 /*** End of Problem 4 **/
 
+// Problem 5
+// 2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
+// What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20 ?
+
+
+
+/*** End of Problem 5 **/
