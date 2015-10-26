@@ -5,7 +5,6 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-//#include <stdlib.h>
 
 size_t SumOfAllNumbersBelow1000();
 size_t SumOfEvenTermsInFibonacciSequenceLessThan4Million();
@@ -15,12 +14,13 @@ bool is_pallindrome(size_t number);
 size_t LargestPallindromeProductOfTwo3DigitNumbers();
 int SmallestPositiveNumberEvenlyDivisibleByAllNumbers1To20();
 int DifferenceBetweenSumOfSquaresOfFirst100NaturalNumbersAndSquareOfSum();
+int PrimeNumber10001();
 
 int main()
 {	
 	using namespace std;
 	cout << "*** Results ***\n";
-	cout << "Choose a problem (1-6): ";
+	cout << "Choose a problem (1-7): ";
 	string user_choice = "";
 	cin >> user_choice;
 	int choice = atoi(user_choice.c_str());
@@ -45,6 +45,9 @@ int main()
 		break;
 	case 6:
 		cout << "Problem 6: " << DifferenceBetweenSumOfSquaresOfFirst100NaturalNumbersAndSquareOfSum() << endl;;
+		break;
+	case 7:
+		cout << "Problem 7: " << PrimeNumber10001() << endl;;
 		break;
 	default:
 		cout << "Invalid choice. Aborting...";
@@ -290,3 +293,15 @@ int DifferenceBetweenSumOfSquaresOfFirst100NaturalNumbersAndSquareOfSum()
 }
 
 /*** End of Problem 6 **/
+
+// Problem 7
+// By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see that the 6th prime is 13.
+// What is the 10 001st prime number ?
+
+int PrimeNumber10001()
+{
+
+	return 1;
+}
+
+/*** End of Problem 7 **/
