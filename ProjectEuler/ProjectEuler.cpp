@@ -177,27 +177,26 @@ size_t LargestPallindromeProductOfTwo3DigitNumbers()
 	std::ofstream log;
 	log.open("problem_4.txt");
 	
-	size_t digit_1 = 999, digit_2 = 998, largest_pallindrome;
+	size_t digit_1 = 999, digit_2 = 999, largest_pallindrome = 1;
 
-	// 999*999 = 998001 != pallindrome
 	// Note: products on integers is commutative; hence,x*y=y*x.
 	// Also, we start at the maximum bound; 999*998 as it is the 
 	// largest pallindrome we seek. This is far faster than starting at 1.
 	for (size_t i = 999; i > 99; i--)
 	{
-		int product = digit_1*digit_2;
-
-		log << "Testing " << product << "...";
-		if (is_pallindrome(product))
+		for (size_t j = 999; j > 99; j--)
 		{
-			largest_pallindrome = product;
-			log << "...Yes!\n";
-			break;
-		}
-		log << "...No.\n";
+			size_t product = i*j;
 
-		digit_1--;
-		digit_2--;
+			if (is_pallindrome(product))
+			{
+				if (product > largest_pallindrome)
+				{
+					largest_pallindrome = product;
+					log << product << "...Yes!\n";
+				}
+			}
+		}
 	}
 	log.close();
 	return largest_pallindrome;
