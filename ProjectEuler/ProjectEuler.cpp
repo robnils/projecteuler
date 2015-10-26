@@ -20,7 +20,7 @@ int main()
 {	
 	using namespace std;
 	cout << "*** Results ***\n";
-	cout << "Choose a problem (1-4): ";
+	cout << "Choose a problem (1-6): ";
 	string user_choice = "";
 	cin >> user_choice;
 	int choice = atoi(user_choice.c_str());
@@ -270,10 +270,23 @@ int SmallestPositiveNumberEvenlyDivisibleByAllNumbers1To20()
 // Find the difference between the sum of the squares of the 
 // first one hundred natural numbers and the square of the sum.
 
+// Note: The question is phrased differently to the example given. 
+// The order given gives a negative answer whereas a positive result is expected.
+
 int DifferenceBetweenSumOfSquaresOfFirst100NaturalNumbersAndSquareOfSum()
 {
+	int sum_squares = 0;
+	int square_sum = 0;
 
-	return 1;
+	for (int i = 1; i <= 100; i++)
+	{
+		sum_squares += i*i;
+		square_sum += i;
+	}
+	square_sum = square_sum*square_sum;
+	int diff = square_sum - sum_squares;
+
+	return diff;
 }
 
 /*** End of Problem 6 **/
