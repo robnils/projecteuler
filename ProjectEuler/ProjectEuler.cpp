@@ -14,7 +14,7 @@ bool is_pallindrome(size_t number);
 size_t LargestPallindromeProductOfTwo3DigitNumbers();
 int SmallestPositiveNumberEvenlyDivisibleByAllNumbers1To20();
 int DifferenceBetweenSumOfSquaresOfFirst100NaturalNumbersAndSquareOfSum();
-int PrimeNumber10001();
+int PrimeNumber10001(bool display_output);
 
 int main()
 {	
@@ -47,7 +47,7 @@ int main()
 		cout << "Problem 6: " << DifferenceBetweenSumOfSquaresOfFirst100NaturalNumbersAndSquareOfSum() << endl;;
 		break;
 	case 7:
-		cout << "Problem 7: " << PrimeNumber10001() << endl;;
+		cout << "Problem 7: " << PrimeNumber10001(false) << endl;;
 		break;
 	default:
 		cout << "Invalid choice. Aborting...";
@@ -298,10 +298,29 @@ int DifferenceBetweenSumOfSquaresOfFirst100NaturalNumbersAndSquareOfSum()
 // By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see that the 6th prime is 13.
 // What is the 10 001st prime number ?
 
-int PrimeNumber10001()
+int PrimeNumber10001(bool display_output)
 {
+	int prime_count = 0;
+	int i = 2;
+	while (true)
+	{
+		if (is_prime(i))
+		{
+			prime_count++;
+			if (display_output)
+			{
+				std::cout << "Prime [" << prime_count << "]: " << i << "\n";
+			}			
+		}
 
-	return 1;
+		if (prime_count == 10001)
+		{
+			break;
+		}
+		i++;
+	}
+
+	return i;
 }
 
 /*** End of Problem 7 **/
